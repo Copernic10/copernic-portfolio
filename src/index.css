@@ -1,0 +1,127 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+ 
+@layer base {
+  :root {
+    --background: 230 25% 5%;
+    --foreground: 210 20% 98%;
+    --card: 230 25% 7%;
+    --card-foreground: 210 20% 98%;
+    --popover: 230 25% 7%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 215 25% 27%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 25% 27%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+    --accent: 215 25% 27%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 25% 27%;
+    --input: 215 25% 27%;
+    --ring: 263.4 70% 50.4%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border selection:bg-cyber-purple/20 selection:text-white;
+  }
+  
+  body {
+    @apply bg-cyber-black text-cyber-gray antialiased overflow-x-hidden font-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-mono text-white;
+  }
+}
+
+@layer utilities {
+  .cyber-glitch {
+    @apply relative overflow-hidden;
+  }
+
+  .cyber-glitch::before,
+  .cyber-glitch::after {
+    @apply content-[''] absolute left-0 w-full h-full opacity-50;
+    clip: rect(0, 0, 0, 0);
+  }
+
+  .cyber-glitch::before {
+    @apply -left-[2px] text-cyber-blue;
+    animation: glitch 500ms infinite linear alternate-reverse;
+  }
+
+  .cyber-glitch::after {
+    @apply left-[2px] text-cyber-pink;
+    animation: glitch 750ms infinite linear alternate;
+  }
+
+  .cyber-gradient {
+    @apply bg-gradient-to-r from-cyber-blue via-cyber-purple to-cyber-pink bg-[length:200%_200%] animate-cyber-gradient;
+  }
+
+  .cyber-btn {
+    @apply relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-mono text-sm font-medium transition duration-300 ease-out border rounded-md group;
+  }
+
+  .cyber-btn-primary {
+    @apply cyber-btn border-cyber-blue text-cyber-blue hover:text-white;
+  }
+
+  .cyber-btn-primary span {
+    @apply absolute inset-0 w-full h-0 transition-all duration-300 ease-out bg-cyber-blue group-hover:h-full opacity-90;
+  }
+
+  .cyber-btn-primary:hover {
+    @apply shadow-[0_0_15px_rgba(0,255,255,0.5)];
+  }
+
+  .cyber-card {
+    @apply relative overflow-hidden rounded-lg border border-cyber-blue/20 bg-cyber-black/50 backdrop-blur-sm transition-all duration-300;
+  }
+
+  .cyber-card:hover {
+    @apply border-cyber-blue/40 shadow-[0_0_15px_rgba(0,255,255,0.3)];
+  }
+
+  .cyber-input {
+    @apply bg-cyber-black/50 border-cyber-blue/20 text-cyber-gray focus:border-cyber-blue focus:ring-1 focus:ring-cyber-blue rounded-md transition-all duration-300;
+  }
+}
+
+.terminal-text {
+  @apply font-mono whitespace-pre-wrap text-cyber-green;
+}
+
+.typewriter {
+  position: relative;
+}
+
+.typewriter::after {
+  content: '|';
+  position: absolute;
+  right: 0;
+  animation: blink 1s infinite;
+}
+
+@keyframes glitch {
+  2%, 64% {
+    transform: translate(2px,0) skew(0deg);
+  }
+  4%, 60% {
+    transform: translate(-2px,0) skew(0deg);
+  }
+  62% {
+    transform: translate(0,0) skew(5deg); 
+  }
+}
+
